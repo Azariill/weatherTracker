@@ -1,0 +1,14 @@
+.fixPadding{
+    margin-left: -25px;
+    
+    
+}
+
+.listStyle li{
+    list-style: none;
+    margin-top: 25px;
+    margin-left: -25px;
+    
+    
+
+}
