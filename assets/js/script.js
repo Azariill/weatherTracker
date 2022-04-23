@@ -17,12 +17,34 @@
 
 // setCurrentDate();
 
-var apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=30.266666&lon=-97.733330&exclude=hourly,minutely,alerts&units=imperial&appid=82f4d437a1c9a6f854f7caed74e5f0d9`
-var geoapiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}`
+
+
 var findCityName = function(cityName){
+    var geoapiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=82f4d437a1c9a6f854f7caed74e5f0d9`
+    fetch(geoapiUrl).then(function(response){
+        return response.json()
+    })
+    .then(function(data){
+        
+         var myLat = data[0].lat.toString();
+         var myLon = data[0].lon.toString();
+         console.log(myLat);
+         console.log(myLon);
+
+        return findWeather(myLat,myLon);
+        
+
+    })
     
+
 }
-fetch(apiURL).then(function(response){
+var findWeather = function(myLat, myLon){
+
+
+    var apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${myLat}&lon=${myLon}&exclude=hourly,minutely,alerts&units=imperial&appid=82f4d437a1c9a6f854f7caed74e5f0d9`
+    
+    
+    fetch(apiURL).then(function(response){
     return response.json()
 })
 .then(function(data){
@@ -56,10 +78,13 @@ fetch(apiURL).then(function(response){
          ulEl.appendChild(liEl);
          ulEl.appendChild(liEl2);
          ulEl.appendChild(liEl3);
+         
 
 
 
     }
 })
+}
+findCityName("dallas");
 
 
