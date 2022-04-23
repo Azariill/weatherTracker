@@ -47,10 +47,10 @@
     </section>
   
     <div class="d-flex flex-column col-12 col-md-9 vh-100">
-      <section class="col-12 col-md-9 h-30 w-100">
+      <section class="col-12 col-md-9 h-30 w-100"  >
         <div class="border border-secondary w-100 mt-3 h-100">
           <div class="">
-            <h2>Austin</h2>
+            <h2 id="mainCity">Austin</h2>
               <ul class="listStyle">
                <li>Temp: </li>
               <li>Wind: </li>
@@ -63,47 +63,8 @@
       </section>
       <section class=" col-12  h-30 mt-5">
         <div class="col-12"><h3>5-Day Forecast:</h3></div>
-        <div class="col-12 d-flex mt-4">
-          <div class="bg-primary col-2 me-3 p-1">
-            <h4>Date</h4>
-            <ul class="listStyle">
-              <li>Temp:</li>
-              <li>Wind:</li>
-              <li>Humidity:</li>
-            </ul>
-        </div>
-        <div class="bg-primary col-2 me-3 p-1">
-          <h4>Date</h4>
-          <ul class="listStyle">
-            <li>Temp:</li>
-            <li>Wind:</li>
-            <li>Humidity:</li>
-          </ul>
-      </div>
-      <div class="bg-primary col-2 me-3 p-1">
-        <h4>Date</h4>
-        <ul class="listStyle">
-          <li>Temp:</li>
-          <li>Wind:</li>
-          <li>Humidity:</li>
-        </ul>
-    </div>
-    <div class="bg-primary col-2 me-3 p-1">
-      <h4>Date</h4>
-      <ul class="listStyle">
-        <li>Temp:</li>
-        <li>Wind:</li>
-        <li>Humidity:</li>
-      </ul>
-  </div>
-  <div class="bg-primary col-2 me-3 p-1">
-    <h4>Date</h4>
-    <ul class="listStyle">
-      <li>Temp:</li>
-      <li>Wind:</li>
-      <li>Humidity:</li>
-    </ul>
-</div>
+        <div class="col-12 d-flex mt-4" id="fiveDaySection">
+ 
    
           
        
@@ -114,7 +75,9 @@
 </main>
 
     <!-- add script at the bottom of the body -->
-    <script src="./assets/js/homepage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   
   </body>
   
