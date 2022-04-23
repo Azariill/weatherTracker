@@ -1,4 +1,4 @@
-
+var currentCity = "";
 
 //set current date
 // var setCurrentDate = function(){
@@ -28,9 +28,7 @@ var findCityName = function(cityName){
         
          var myLat = data[0].lat.toString();
          var myLon = data[0].lon.toString();
-         console.log(myLat);
-         console.log(myLon);
-
+         currentCity = data[0].name;
         return findWeather(myLat,myLon);
         
 
@@ -49,7 +47,7 @@ var findWeather = function(myLat, myLon){
 })
 .then(function(data){
     var fiveDaySection = $('#fiveDaySection');
-    console.log(data);
+    
     
      for(var i = 1; i < 6; i++){
 
@@ -60,7 +58,7 @@ var findWeather = function(myLat, myLon){
          //create h4
          var h4EL = document.createElement('h4');
          h4EL.setAttribute('id', `date${i}`);
-         h4EL.textContent = "Austin";
+         h4EL.textContent = currentCity;
          divEl.appendChild(h4EL);
 
 
@@ -85,6 +83,6 @@ var findWeather = function(myLat, myLon){
     }
 })
 }
-findCityName("dallas");
+findCityName("bismarck");
 
 
