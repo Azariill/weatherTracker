@@ -1,21 +1,23 @@
 var currentCity = "";
+var mainCity = $("#mainCity");
+var currentDate = moment().format("M/DD/YYYY");
 
 //set current date
-// var setCurrentDate = function(){
-//     var mainCity = $("#mainCity");
+ var setCurrentDate = function(){
+     
     
     
 
-//     //formats date 
-//     var currentDate = moment().format("M/DD/YYYY");
-//     mainCity.text(`Austin (${currentDate})`);
-//     for(var i = 1; i < 6; i++){
-//         var currentDateEl = $(`#date${i}`).text(currentDate);
-//         console.log();
-//     }
-// }
+     //formats date 
+     
+     
+     for(var i = 1; i < 6; i++){
+         var currentDateEl = $(`#date${i}`).text(currentDate);
+        console.log();
+     }
+ }
 
-// setCurrentDate();
+ setCurrentDate();
 
 
 
@@ -29,6 +31,7 @@ var findCityName = function(cityName){
          var myLat = data[0].lat.toString();
          var myLon = data[0].lon.toString();
          currentCity = data[0].name;
+         mainCity.text(`${currentCity} ${currentDate}` );
         return findWeather(myLat,myLon);
         
 
@@ -46,10 +49,27 @@ var findWeather = function(myLat, myLon){
     return response.json()
 })
 .then(function(data){
+    console.log(data);
     var fiveDaySection = $('#fiveDaySection');
+    var currentTemp = $('#currentTemp');
+    var currentWind = $('#currentWind');
+    var currentHumidity = $('#currentHumidity');
+    var currentUV = $('#currentUV');
+    currentTemp.text(`Temp: ${Math.round(data.current.temp)} F°`);
+    currentWind.text(` Wind Speed: ${Math.round(data.daily[0].wind_speed)} MPH`);
+    currentHumidity.text(`Humidity: ${Math.round(data.current.humidity)} %`);
+    currentUV.text(`UV Index: ${data.current.uvi}`);
+    
     
     
      for(var i = 1; i < 6; i++){
+         var dateForCity = moment().add(i, "days").format("M/DD/YYYY");
+         var imgId = data.daily[i].weather[0].icon;
+         console.log(imgId);
+         var pngLink = `http://openweathermap.org/img/wn/${imgId}@2x.png`
+         
+
+         
 
         //Create a div
          var divEl = document.createElement('div');
@@ -58,13 +78,19 @@ var findWeather = function(myLat, myLon){
          //create h4
          var h4EL = document.createElement('h4');
          h4EL.setAttribute('id', `date${i}`);
-         h4EL.textContent = currentCity;
+         h4EL.textContent = dateForCity;
          divEl.appendChild(h4EL);
+         var imgEl = document.createElement('img');
+         imgEl.setAttribute("src",pngLink);
+         imgEl.setAttribute("alt", "small icon showing current weather conditions");
+         divEl.appendChild(imgEl);
 
 
          var ulEl = document.createElement('ul');
          ulEl.classList="listStyle";
          divEl.appendChild(ulEl);
+         
+         
 
          var liEl = document.createElement('li');
              liEl.textContent = `Temp: ${Math.round(data.daily[i].temp.max)} F°`
@@ -83,6 +109,6 @@ var findWeather = function(myLat, myLon){
     }
 })
 }
-findCityName("bismarck");
+findCityName("austin");
 
 
