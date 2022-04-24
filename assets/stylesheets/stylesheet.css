@@ -12,3 +12,23 @@
     
 
 }
+
+.favorable{
+    color: white;
+    background-color: rgb(46, 216, 46);
+
+}
+
+.moderate{
+    color: white;
+    background-color: rgb(214, 214, 19);
+
+}
+
+.severe{
+    color: white;
+    background-color:rgb(255, 40, 40);
+
+
+
+}

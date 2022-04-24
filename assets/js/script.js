@@ -40,10 +40,24 @@ var findWeather = function(myLat, myLon){
     var currentWind = $('#currentWind');
     var currentHumidity = $('#currentHumidity');
     var currentUV = $('#currentUV');
+    var uvIndex = Math.round(data.current.uvi);
+    var uvIndexStyle = "favorable";
+
+
+    if(uvIndex >= 2 && uvIndex < 8){
+        uvIndexStyle ="moderate";
+
+    }
+    else if( uvIndex >= 8){
+        uvIndexStyle = "severe";
+    }
+    else{
+        uvIndexStyle = uvIndexStyle;
+    }
     currentTemp.text(`Temp: ${Math.round(data.current.temp)} F°`);
     currentWind.text(` Wind Speed: ${Math.round(data.daily[0].wind_speed)} MPH`);
     currentHumidity.text(`Humidity: ${Math.round(data.current.humidity)} %`);
-    currentUV.html(`UV Index: <span class="uvIndex"> ${data.current.uvi}</span>`);
+    currentUV.html(`UV Index: <span class="${uvIndexStyle}"> ${uvIndex}</span>`);
     
     
     
