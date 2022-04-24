@@ -75,7 +75,7 @@ var findWeather = function(myLat, myLon){
 
         //Create a div
          var divEl = document.createElement('div');
-         divEl.classList = "bg-primary col-2 me-3 p-1";
+         divEl.classList = "forecastContainer col-12 col-md-2 me-3 p-1";
          fiveDaySection.append(divEl);
          //create h4
          var h4EL = document.createElement('h4');
@@ -83,8 +83,10 @@ var findWeather = function(myLat, myLon){
          h4EL.textContent = dateForCity;
          divEl.appendChild(h4EL);
          var imgEl = document.createElement('img');
+         imgEl.setAttribute("id", "pngImg");
          imgEl.setAttribute("src",pngLink);
          imgEl.setAttribute("alt", "small icon showing current weather conditions");
+         
          divEl.appendChild(imgEl);
 
 
@@ -127,12 +129,12 @@ var addToHistory = function(citytext){
     var cityButtons = $('#cityButtons');
     cityButtons.html("");
     
-debugger;
+
     if(searchHistory.length < 6 && citytext){
         
         
         searchHistory.unshift(citytext);
-        console.log(searchHistory);
+        
     }
     else if(searchHistory.length === 6){
         searchHistory.pop();
@@ -153,7 +155,7 @@ debugger;
         var btnEl = $("<div>").addClass("btn btn-info mt-3");
         btnEl.attr('id', "cityButtons");
         btnEl.text(searchHistory[i]);
-        console.log(btnEl);
+
         cityButtons.append(btnEl);
 
 
@@ -174,7 +176,7 @@ $('#user-form').submit(function(event){
 })
 $('#cityButtons').click(function(event){
     var event = event.target;
-    console.log(event);
+    
     var citytext = event.textContent;
     findCityName(citytext);
     

@@ -1,7 +1,28 @@
-.fixPadding{
-    margin-left: -25px;
-    
-    
+.currentCityDiv{
+    width: 85%;
+    margin-left: 45px;
+    margin-top: 15px;
+    padding-left: 50px;
+    padding-top: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 10px 10px grey;
+    background-color: white;
+}
+
+.forecastContainer{
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 10px 10px grey;
+    background-color: white;
+}
+
+.fiveDaySection{
+    margin-left: 45px;
+}
+
+body{
+    background-color: #c7e2ff;
 }
 
 .listStyle li{
@@ -16,12 +37,16 @@
 .favorable{
     color: white;
     background-color: rgb(46, 216, 46);
+    padding: 0px 30px;
+    border-radius: 10%;
 
 }
 
 .moderate{
     color: white;
     background-color: rgb(214, 214, 19);
+     padding: 0px 25px;
+    border-radius: 10%;
 
 }
 
@@ -31,4 +56,50 @@
 
 
 
+}
+#pngImg{
+    background-color: #c7e7ff;
+    padding-left: 24px;
+    padding-right: 90px;
+    box-shadow: 5px 5px grey;
+    border-radius: 15px;
+    border-bottom: 3px solid black;
+    
+}
+
+.citySearchDiv{
+    border: 2px solid black;
+    box-shadow: 5px 5px grey;
+    margin-top: 15px;
+    margin-left: 5px;
+    
+}
+
+.mainHeader{
+     font-family: Brush Script MT;
+     
+     border-bottom: 3px solid black;
+     background: rgb(204,251,255);
+     background: linear-gradient(90deg, rgb(109 204 212) 24%, rgb(18 33 233 / 78%) 41%, rgb(14 57 207 / 76%) 51%, rgba(155,255,222,1) 100%, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%);
+     color: #ffffff;
+     text-shadow: 2px 2px #000000;
+}
+#currentTemp{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+#currentWind, #currentHumidity{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#currentUV{
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+li{
+    font-size: 18px;
+    font-weight: bolder;
 }

@@ -10,14 +10,14 @@
 
     
 </head>
-<body class="flex-column min-100-vh fixPadding">
-    <header class="container-fluid bg-primary text-center p-2">
+<body class="flex-column min-100-vh">
+    <header class="container-fluid mainHeader text-center p-2">
       <h1 class="weatherDashTxt"> Weather Dashboard</h1>
     </header>
   
-  <main class="container-fluid row">
-    <section class="col-12 col-md-3">
-      <div class=" border border-primary d-flex flex-column">
+  <main class=".container-sm d-md-flex">
+    <section class="col-12 col-md-3 ">
+      <div class=" citySearchDiv d-flex flex-column">
         
         <div class="card">
           <h3 class="card-header text-uppercase text-center">Search for a City </h3>
@@ -42,7 +42,7 @@
   
     <div class="d-flex flex-column col-12 col-md-9 vh-100">
       <section class="col-12 col-md-9 h-30 w-100"  >
-        <div class="border border-secondary w-100 mt-3 h-100">
+        <div class="border border-secondary currentCityDiv h-100">
           <div>
             <h2 id="mainCity">Austin</h2>
             <div class="currentDayWeather"></div>
@@ -56,9 +56,9 @@
 
         </div>
       </section>
-      <section class=" col-12  h-30 mt-5">
+      <section class=" col-12  h-30 mt-5 fiveDaySection">
         <div class="col-12"><h3>5-Day Forecast:</h3></div>
-        <div class="col-12 d-flex mt-4" id="fiveDaySection">
+        <div class="col-12 d-md-flex mt-4" id="fiveDaySection">
  
    
           
