@@ -1,26 +1,7 @@
 var currentCity = "";
 var mainCity = $("#mainCity");
 var currentDate = moment().format("M/DD/YYYY");
-
-
-//set current date
- var setCurrentDate = function(){
-     
-    
-    
-
-     //formats date 
-     
-     
-     for(var i = 1; i < 6; i++){
-         var currentDateEl = $(`#date${i}`).text(currentDate);
-        console.log();
-     }
- }
-
- setCurrentDate();
-
-
+var searchHistory = [];
 
 var findCityName = function(cityName){
     var geoapiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=82f4d437a1c9a6f854f7caed74e5f0d9`
@@ -62,7 +43,7 @@ var findWeather = function(myLat, myLon){
     currentTemp.text(`Temp: ${Math.round(data.current.temp)} F°`);
     currentWind.text(` Wind Speed: ${Math.round(data.daily[0].wind_speed)} MPH`);
     currentHumidity.text(`Humidity: ${Math.round(data.current.humidity)} %`);
-    currentUV.text(`UV Index: ${data.current.uvi}`);
+    currentUV.html(`UV Index: <span class="uvIndex"> ${data.current.uvi}</span>`);
     
     
     
@@ -127,14 +108,68 @@ var findWeather = function(myLat, myLon){
 })
 }
 
+var addToHistory = function(citytext){
+    
+    var cityButtons = $('#cityButtons');
+    cityButtons.html("");
+    
+debugger;
+    if(searchHistory.length < 6 && citytext){
+        
+        
+        searchHistory.unshift(citytext);
+        console.log(searchHistory);
+    }
+    else if(searchHistory.length === 6){
+        searchHistory.pop();
+        searchHistory[1] = searchHistory[0];
+        searchHistory[0] = citytext;
+        
+        
+        
+    }
+    else{
+        return;
+    }
+
+    if(searchHistory.length > 0){
+        for(var i = 0; i < searchHistory.length; i++){
+        
+
+        var btnEl = $("<div>").addClass("btn btn-info mt-3");
+        btnEl.attr('id', "cityButtons");
+        btnEl.text(searchHistory[i]);
+        console.log(btnEl);
+        cityButtons.append(btnEl);
+
+
+
+    }
+}
+
+}
+
 $('#user-form').submit(function(event){
     
     var citytext = $('#city').val();
+    addToHistory(citytext.trim());
     findCityName(citytext.trim());
     $('#city').val("");
     event.preventDefault();
     
 })
+$('#cityButtons').click(function(event){
+    var event = event.target;
+    console.log(event);
+    var citytext = event.textContent;
+    findCityName(citytext);
+    
+
+
+
+
+})
+
 
 
 
