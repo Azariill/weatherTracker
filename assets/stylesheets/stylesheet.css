@@ -60,7 +60,7 @@ body{
 #pngImg{
     background-color: #c7e7ff;
     padding-left: 24px;
-    padding-right: 90px;
+    padding-right: 70px;
     box-shadow: 5px 5px grey;
     border-radius: 15px;
     border-bottom: 3px solid black;
@@ -102,4 +102,12 @@ body{
 li{
     font-size: 18px;
     font-weight: bolder;
+}
+
+#cityBtns:hover{
+    background-color: #8be1eb;
+    width: 85%;
+    transform: scale(1.1);
+    margin-left: 50px;
+    
 }

@@ -153,7 +153,7 @@ var addToHistory = function(citytext){
         
 
         var btnEl = $("<div>").addClass("btn btn-info mt-3");
-        btnEl.attr('id', "cityButtons");
+        btnEl.attr('id', "cityBtns");
         btnEl.text(searchHistory[i]);
 
         cityButtons.append(btnEl);
