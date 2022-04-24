@@ -75,7 +75,7 @@ var findWeather = function(myLat, myLon){
 
         //Create a div
          var divEl = document.createElement('div');
-         divEl.classList = "forecastContainer col-12 col-md-2 me-3 p-1";
+         divEl.classList = "forecastContainer col-md-12 col-lg-2 me-3 p-1";
          fiveDaySection.append(divEl);
          //create h4
          var h4EL = document.createElement('h4');
@@ -158,12 +158,12 @@ var addToHistory = function(citytext){
         var btnEl = $("<div>").addClass("btn btn-info mt-3");
         btnEl.attr('id', "cityBtns");
         btnEl.text(searchHistory[i]);
-        debugger;
+        
         cityButtons.append(btnEl);
 
 
     }
-    debugger;
+    
     saveBtns();
 }
 
@@ -178,7 +178,7 @@ var saveBtns = function(){
     if(searchHistory.length >= 0){
 
         for(var i = 0; i < searchHistory.length; i++)
-            var savedSearchHistory = localStorage.setItem(`btn${i}`, JSON.stringify(searchHistory[i]));
+             localStorage.setItem(`btn${i}`, JSON.stringify(searchHistory[i]));
     }
 }
 

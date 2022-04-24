@@ -19,6 +19,8 @@
 
 .fiveDaySection{
     margin-left: 45px;
+    width: 95%;
+    
 }
 
 body{
@@ -60,7 +62,7 @@ body{
 #pngImg{
     background-color: #c7e7ff;
     padding-left: 24px;
-    padding-right: 70px;
+    padding-right: 50px;
     box-shadow: 5px 5px grey;
     border-radius: 15px;
     border-bottom: 3px solid black;
