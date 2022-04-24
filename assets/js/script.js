@@ -2,6 +2,7 @@ var currentCity = "";
 var mainCity = $("#mainCity");
 var currentDate = moment().format("M/DD/YYYY");
 
+
 //set current date
  var setCurrentDate = function(){
      
@@ -27,11 +28,13 @@ var findCityName = function(cityName){
         return response.json()
     })
     .then(function(data){
-        
+
+
+         
          var myLat = data[0].lat.toString();
          var myLon = data[0].lon.toString();
          currentCity = data[0].name;
-         mainCity.text(`${currentCity} ${currentDate}` );
+
         return findWeather(myLat,myLon);
         
 
@@ -49,8 +52,9 @@ var findWeather = function(myLat, myLon){
     return response.json()
 })
 .then(function(data){
-    console.log(data);
+
     var fiveDaySection = $('#fiveDaySection');
+    fiveDaySection.html("");
     var currentTemp = $('#currentTemp');
     var currentWind = $('#currentWind');
     var currentHumidity = $('#currentHumidity');
@@ -62,11 +66,14 @@ var findWeather = function(myLat, myLon){
     
     
     
+    
      for(var i = 1; i < 6; i++){
          var dateForCity = moment().add(i, "days").format("M/DD/YYYY");
          var imgId = data.daily[i].weather[0].icon;
-         console.log(imgId);
          var pngLink = `http://openweathermap.org/img/wn/${imgId}@2x.png`
+         
+        
+         
          
 
          
@@ -107,8 +114,27 @@ var findWeather = function(myLat, myLon){
 
 
     }
+    imgId = data.daily[0].weather[0].icon;
+    var imgEL2= document.createElement("img");
+    imgEL2.setAttribute("src", pngLink);
+    imgEL2.setAttribute("alt","image depicting current weather conditions");
+    var currentDayWeather = $('.currentDayWeather');
+    currentDayWeather.html("");
+    currentDayWeather.append(imgEL2);
+   
+
+    mainCity.text(`${currentCity} ${currentDate}` );
 })
 }
-findCityName("austin");
+
+$('#user-form').submit(function(event){
+    
+    var citytext = $('#city').val();
+    findCityName(citytext.trim());
+    $('#city').val("");
+    event.preventDefault();
+    
+})
+
 
 

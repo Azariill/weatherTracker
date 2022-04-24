@@ -22,8 +22,8 @@
         <div class="card">
           <h3 class="card-header text-uppercase">Search for a City: </h3>
           <form id="user-form" class="card-body d-flex flex-column">
-            <input type="text" name="city" id="city" autofocus="true" class="form-input p-2 w-53" />
-            <button type="submit" class="btn btn-info w-53 mt-3">Search</button>
+            <input type="text" name="city" id="city" autofocus="true" class="form-input p-2 w-53 city" />
+            <button type="submit" id="search" class="btn btn-info w-53 mt-3">Search</button>
           </form>
         </div>
       
@@ -49,8 +49,9 @@
     <div class="d-flex flex-column col-12 col-md-9 vh-100">
       <section class="col-12 col-md-9 h-30 w-100"  >
         <div class="border border-secondary w-100 mt-3 h-100">
-          <div class="">
+          <div>
             <h2 id="mainCity">Austin</h2>
+            <div class="currentDayWeather"></div>
               <ul class="listStyle">
               <li id="currentTemp">Temp: </li>
               <li id="currentWind">Wind: </li>
