@@ -147,27 +147,82 @@ var addToHistory = function(citytext){
     else{
         return;
     }
+   
 
     if(searchHistory.length > 0){
         for(var i = 0; i < searchHistory.length; i++){
-        
+            
 
+        
+        
         var btnEl = $("<div>").addClass("btn btn-info mt-3");
         btnEl.attr('id', "cityBtns");
         btnEl.text(searchHistory[i]);
-
+        debugger;
         cityButtons.append(btnEl);
 
 
+    }
+    debugger;
+    saveBtns();
+}
 
+}
+
+var saveCity = function(citytext){
+    var savedCity = localStorage.setItem("city-text", JSON.stringify(citytext));
+
+}
+
+var saveBtns = function(){
+    if(searchHistory.length >= 0){
+
+        for(var i = 0; i < searchHistory.length; i++)
+            var savedSearchHistory = localStorage.setItem(`btn${i}`, JSON.stringify(searchHistory[i]));
     }
 }
 
+var loadSavedItems = function(){
+    var savedCity = localStorage.getItem("city-text");
+    savedCity = JSON.parse(savedCity);
+    var savedBtnArray = localStorage.getItem("btn0");
+    savedBtnArray = JSON.parse(savedBtnArray);
+    
+
+    if(savedBtnArray){
+        addToHistory(savedBtnArray);
+        
+
+        // Check for more buttons
+        for(var i = 1; i < 6 ; i++){
+            savedBtnArray = localStorage.getItem(`btn${i}`);
+            if(savedBtnArray){
+                savedBtnArray = JSON.parse(savedBtnArray);
+                addToHistory(savedBtnArray);
+            }
+           
+        }
+    }
+
+
+
+    if(savedCity){
+            findCityName(savedCity);
+            
+      
+     
+    }
+    else{
+        return false;
+    }
+
+    console.log(savedCity);
 }
 
 $('#user-form').submit(function(event){
     
     var citytext = $('#city').val();
+    saveCity(citytext.trim());
     addToHistory(citytext.trim());
     findCityName(citytext.trim());
     $('#city').val("");
@@ -187,5 +242,5 @@ $('#cityButtons').click(function(event){
 })
 
 
-
+loadSavedItems();
 

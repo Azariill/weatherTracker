@@ -104,6 +104,11 @@ li{
     font-weight: bolder;
 }
 
+#cityBtns{
+    text-transform: capitalize;
+
+}
+
 #cityBtns:hover{
     background-color: #8be1eb;
     width: 85%;
