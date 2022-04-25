@@ -4,7 +4,7 @@ var currentDate = moment().format("M/DD/YYYY");
 var searchHistory = [];
 
 var findCityName = function(cityName){
-    var geoapiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=fb17d9175b8f6b9a793c871f4b1c24dd`
+    var geoapiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=fb17d9175b8f6b9a793c871f4b1c24dd`
     fetch(geoapiUrl).then(function(response){
         return response.json()
     })
