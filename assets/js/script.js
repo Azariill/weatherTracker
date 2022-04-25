@@ -12,9 +12,10 @@ var findCityName = function(cityName){
         
 
          
-         var myLat = data.lat;
-         var myLon = data.lon;
-
+         var myLat = data.coord.lat;
+         var myLon = data.coord.lon;
+        
+        
          
          currentCity = data.name;
 
@@ -35,6 +36,7 @@ var findWeather = function(myLat, myLon){
     return response.json()
 })
 .then(function(data){
+    console.log(data);
 
     var fiveDaySection = $('#fiveDaySection');
     fiveDaySection.html("");
@@ -67,7 +69,7 @@ var findWeather = function(myLat, myLon){
      for(var i = 1; i < 6; i++){
          var dateForCity = moment().add(i, "days").format("M/DD/YYYY");
          var imgId = data.daily[i].weather[0].icon;
-         var pngLink = `https://openweathermap.org/img/wn/${imgId}@2x.png`
+         var pngLink = `http://openweathermap.org/img/wn/${imgId}@2x.png`
          
         
          
