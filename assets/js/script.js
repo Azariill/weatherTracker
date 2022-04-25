@@ -4,7 +4,7 @@ var currentDate = moment().format("M/DD/YYYY");
 var searchHistory = [];
 
 var findCityName = function(cityName){
-    var geoapiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=82f4d437a1c9a6f854f7caed74e5f0d9`
+    var geoapiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=fb17d9175b8f6b9a793c871f4b1c24dd`
     fetch(geoapiUrl).then(function(response){
         return response.json()
     })
@@ -26,7 +26,7 @@ var findCityName = function(cityName){
 var findWeather = function(myLat, myLon){
 
 
-    var apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${myLat}&lon=${myLon}&exclude=hourly,minutely,alerts&units=imperial&appid=82f4d437a1c9a6f854f7caed74e5f0d9`
+    var apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${myLat}&lon=${myLon}&exclude=hourly,minutely,alerts&units=imperial&appid=fb17d9175b8f6b9a793c871f4b1c24dd`
     
     
     fetch(apiURL).then(function(response){
