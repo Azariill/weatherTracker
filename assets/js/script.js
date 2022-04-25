@@ -4,17 +4,19 @@ var currentDate = moment().format("M/DD/YYYY");
 var searchHistory = [];
 
 var findCityName = function(cityName){
-    var geoapiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=fb17d9175b8f6b9a793c871f4b1c24dd`
+    var geoapiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=fb17d9175b8f6b9a793c871f4b1c24dd`
     fetch(geoapiUrl).then(function(response){
         return response.json()
     })
     .then(function(data){
-
+        
 
          
-         var myLat = data[0].lat.toString();
-         var myLon = data[0].lon.toString();
-         currentCity = data[0].name;
+         var myLat = data.lat;
+         var myLon = data.lon;
+
+         
+         currentCity = data.name;
 
         return findWeather(myLat,myLon);
         
@@ -65,7 +67,7 @@ var findWeather = function(myLat, myLon){
      for(var i = 1; i < 6; i++){
          var dateForCity = moment().add(i, "days").format("M/DD/YYYY");
          var imgId = data.daily[i].weather[0].icon;
-         var pngLink = `http://openweathermap.org/img/wn/${imgId}@2x.png`
+         var pngLink = `https://openweathermap.org/img/wn/${imgId}@2x.png`
          
         
          
@@ -216,7 +218,7 @@ var loadSavedItems = function(){
         return false;
     }
 
-    console.log(savedCity);
+    
 }
 
 $('#user-form').submit(function(event){
